@@ -1,0 +1,8 @@
+my_defender
+*.o
+*.a
+*.gcda
+*.gcno
+*.gch
+*.swp
+include/my.h
