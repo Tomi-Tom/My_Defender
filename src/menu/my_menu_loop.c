@@ -9,18 +9,10 @@
 
 int is_button_pressed(button_t *button, sfVector2f mouse, sfMouseButton click)
 {
-    static int state = 0;
     if (mouse.x >= button->vec.x && mouse.x <= button->vec.x +
         button->rect.width && mouse.y >= button->vec.y && mouse.y
         <= button->vec.y + button->rect.height &&
         sfMouse_isButtonPressed(click) == 1)
-        state = 1;
-    if (mouse.x >= button->vec.x && mouse.x <= button->vec.x +
-        button->rect.width && mouse.y >= button->vec.y && mouse.y
-        <= button->vec.y + button->rect.height &&
-        sfMouse_isButtonPressed(click) == 0 && state == 1)
-        state = 2;
-    if (state == 2)
         return 1;
     return 0;
 }
