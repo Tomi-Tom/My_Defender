@@ -36,18 +36,11 @@ void my_display_buttons(game_t *game)
     my_display_button(game->menu->leave, game);
 }
 
-void my_anim_menu_map(game_t *game)
-{
-    static float i = 0;
-
-    sfRenderWindow_drawSprite(game->window, game->menu->map, NULL);
-}
-
 void my_display_menu(game_t *game)
 {
     sfRenderWindow_clear(game->window, sfBlack);
     sfRenderWindow_drawSprite(game->window, game->menu->back, NULL);
-    my_anim_menu_map(game);
+    sfRenderWindow_drawSprite(game->window, game->menu->map, NULL);
     sfRenderWindow_drawSprite(game->window, game->menu->front, NULL);
     my_display_buttons(game);
     sfRenderWindow_display(game->window);
