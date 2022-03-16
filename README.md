@@ -4,7 +4,7 @@ An Epitech Graphical project
 
 ## How To Use
 
-> make
+> make<br/>
 > ./my_defender [map]
 
 ### What is [MAP]
