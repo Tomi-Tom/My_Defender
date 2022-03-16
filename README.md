@@ -4,8 +4,8 @@ An Epitech Graphical project
 
 ## How To Use
 
-1) >> make
-2) >> ./my_defender [map]
+> make
+> ./my_defender [map]
 
 ### What is [MAP]
 
