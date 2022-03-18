@@ -29,7 +29,7 @@ void my_set_game_base_info(game_t *game, char *filename)
         NULL);
     sfSprite *sprite = sfSprite_create();
     sfTexture *tex_portal = sfTexture_createFromFile("assets/portal.png", NULL);
-    sfSprite *sp_portal= sfSprite_create();
+    sfSprite *sp_portal = sfSprite_create();
     sfTexture *tex_base = sfTexture_createFromFile("assets/base.png", NULL);
     sfSprite *sp_base = sfSprite_create();
     char *buf = my_read_file(filename);
@@ -40,7 +40,7 @@ void my_set_game_base_info(game_t *game, char *filename)
     sfSprite_setTexture(sp_base, tex_base, sfTrue);
     game->window = window;
     game->bgsprite = sprite;
-    game->portal= sp_portal;
+    game->portal = sp_portal;
     game->base = sp_base;
 }
 
@@ -57,5 +57,6 @@ game_t *my_init_game(char *filename)
     my_init_life(game);
     my_init_music(game);
     my_init_menu(game);
+    my_init_pause(game);
     return game;
 }

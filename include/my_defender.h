@@ -36,20 +36,25 @@ typedef struct vec_s {
     #include "my_life.h"
     #include "my_music.h"
     #include "my_menu.h"
+    #include "my_pause.h"
+    #include "my_settings.h"
 
 typedef struct game_s {
     int end;
     int end_game;
+    int pause;
     sfRenderWindow *window;
     sfSprite *bgsprite;
     sfSprite *portal;
     sfSprite *base;
     char **map;
     menu_t *menu;
+    pause_t *pause_menu;
     music_t *music;
     tower_plate_t *tower;
     life_t *life;
     wave_t *wave;
+    sfEvent event;
 } game_t;
 
 /*==========================[BEGIN]==========================*/
@@ -69,11 +74,13 @@ void my_init_ennemies(game_t *game);
 void my_init_life(game_t *game);
 void my_init_music(game_t *game);
 void my_init_menu(game_t *game);
+void my_init_pause(game_t *game);
 
 /*==========================[LOOP]==========================*/
 
 void my_game_loop(game_t *game);
 void my_menu_loop(game_t *game);
+void my_pause_menu(game_t *game);
 
 /*=========================[CREATE]=========================*/
 
@@ -100,13 +107,24 @@ void my_display_tower(game_t *game);
 void my_display_ennemies(game_t *game);
 void my_display_life(game_t *game);
 
+void my_display_button(button_t *button, game_t *game);
+
 /*=========================[PARSING]========================*/
 
 vec_t get_departure(char **map);
+
+/*==========================[EVENT]=========================*/
+
+int my_poll_event(game_t *game);
+int is_button_pressed(button_t *button, sfVector2i mouse, sfMouseButton click);
 
 /*=========================[LINKED]=========================*/
 
 entity_t *my_append_entity(game_t *game);
 entity_t *my_delete_entity(game_t *game, int id);
+
+/*==========================[FREE]==========================*/
+
+void my_free_struct_game(game_t *game);
 
 #endif /* !MY_PROJECT_H */

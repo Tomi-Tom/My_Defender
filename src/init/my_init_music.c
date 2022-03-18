@@ -11,6 +11,8 @@ void my_init_music(game_t *game)
 {
     game->music = malloc(sizeof(music_t));
 
-    game->music->game_music = sfMusic_createFromFile("assets/musics/bgmusic.ogg");
-    game->music->menu_music = sfMusic_createFromFile("assets/musics/loop_menu.ogg");
+    game->music->game_music =
+        sfMusic_createFromFile("assets/musics/bgmusic.ogg");
+    game->music->menu_music =
+        sfMusic_createFromFile("assets/musics/loop_menu.ogg");
 }

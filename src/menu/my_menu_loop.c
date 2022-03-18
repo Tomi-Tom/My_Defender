@@ -7,47 +7,54 @@
 
 #include "my_defender.h"
 
-int is_button_pressed(button_t *button, sfVector2f mouse, sfMouseButton click)
+int is_button_pressed(button_t *button, sfVector2i mouse, sfMouseButton click)
 {
-    if (mouse.x >= button->vec.x && mouse.x <= button->vec.x +
-        button->rect.width && mouse.y >= button->vec.y && mouse.y
-        <= button->vec.y + button->rect.height &&
-        sfMouse_isButtonPressed(click) == 1)
+    if (BUTTON_PRESSED)
         return 1;
     return 0;
 }
 
 int my_get_actions_in_menu(game_t *game)
 {
-    sfVector2f mouse = {0, 0};
+    sfVector2i mouse = {0, 0};
     sfMouseButton click = 0;
 
-    mouse.x = sfMouse_getPositionRenderWindow(game->window).x;
-    mouse.y = sfMouse_getPositionRenderWindow(game->window).y;
-    if (is_button_pressed(game->menu->play, mouse, click)) {
-        printf("ON PLAY\n");
-        return 1;
-    }
-    if (is_button_pressed(game->menu->how_to_play, mouse, click)) {
-        printf("ON HOW TO PLAY\n");
-        return 2;
-    }
-    if (is_button_pressed(game->menu->leave, mouse, click)) {
-        printf("ON LEAVE\n");
-        return 3;
-    }
+    mouse = sfMouse_getPositionRenderWindow(game->window);
+    if (is_button_pressed(game->menu->play, mouse, click))
+        return LAUNCH_GAME;
+    if (is_button_pressed(game->menu->how_to_play, mouse, click))
+        return DISPLAY_HTP;
+    if (is_button_pressed(game->menu->leave, mouse, click))
+        return LEAVE_GAME;
+    return 0;
+}
+
+void my_display_how_to_play(game_t *game)
+{
+    sfSprite *sp_hplay = sfSprite_create();
+    sfTexture *tex_hplay = sfTexture_createFromFile("assets/how_to_play.png",
+        NULL);
+    sfMouseButton click = 0;
+
+    sfSprite_setTexture(sp_hplay, tex_hplay, sfTrue);
+    sfRenderWindow_drawSprite(game->window, sp_hplay, NULL);
+    sfRenderWindow_display(game->window);
+    while (sfMouse_isButtonPressed(click) == 0) {}
 }
 
 void my_menu_loop(game_t *game)
 {
     int choose = 0;
 
+    my_poll_event(game);
     my_display_menu(game);
     choose = my_get_actions_in_menu(game);
-    if (choose == 1) {
+    if (choose == LAUNCH_GAME) {
         sfMusic_stop(game->music->menu_music);
         my_game_loop(game);
-    } else if (choose == 3) {
-        game->end = 1;
     }
+    if (choose == DISPLAY_HTP)
+        my_display_how_to_play(game);
+    if (choose == LEAVE_GAME)
+        game->end = 1;
 }

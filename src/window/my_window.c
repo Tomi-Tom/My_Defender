@@ -15,4 +15,6 @@ void my_window(int ac, char **av)
     while (game->end == 0) {
         my_menu_loop(game);
     }
+    sfRenderWindow_close(game->window);
+    my_free_struct_game(game);
 }

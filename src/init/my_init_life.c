@@ -24,7 +24,7 @@ void my_init_life(game_t *game)
     sfTexture *tex_base = sfTexture_createFromFile("assets/base_hp.png",
         NULL);
     sfSprite *sp_base = sfSprite_create();
-    sfTexture *tex_hp= sfTexture_createFromFile("assets/hp.png",
+    sfTexture *tex_hp = sfTexture_createFromFile("assets/hp.png",
         NULL);
     sfSprite *sp_hp = sfSprite_create();
 

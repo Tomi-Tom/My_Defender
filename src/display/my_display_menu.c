@@ -18,10 +18,9 @@ void my_display_button(button_t *button, game_t *game)
     vec.x = button->vec.x;
     vec.y = button->vec.y;
     button->rect.left = 0;
-    if (mouse.x >= vec.x && mouse.x <= vec.x + button->rect.width && mouse.y
-        >= vec.y && mouse.y <= vec.y + button->rect.height) {
+    if (CURSOR_IS_IN_BUTTON) {
         button->rect.left = 535;
-        if (sfMouse_isButtonPressed(click))
+        if (LEFT_CLICKED)
             button->rect.left = 535 * 2;
     }
     sfSprite_setPosition(button->sprite, vec);
@@ -36,9 +35,55 @@ void my_display_buttons(game_t *game)
     my_display_button(game->menu->leave, game);
 }
 
+void my_anim_map_menu2(game_t *game)
+{
+    sfVector2f vec;
+    static int state = 0;
+    static float rotate = 1;
+
+    if (rotate >= 25)
+        state = 1;
+    if (rotate <= -25)
+        state = 0;
+    if (state == 0)
+        rotate += 0.004;
+    if (state == 1)
+        rotate -= 0.004;
+    vec.x = 800;
+    vec.y = 600;
+    sfSprite_setOrigin(game->menu->map, vec);
+    sfSprite_setPosition(game->menu->map, vec);
+    sfSprite_setRotation(game->menu->map, rotate);
+}
+
+void my_anim_map_menu(game_t *game)
+{
+    sfVector2f vec;
+    static int state = 0;
+    static float scale = 1;
+
+    if (scale >= 1.1)
+        state = 1;
+    if (scale <= 0.9)
+        state = 0;
+    if (state == 0)
+        scale += 0.00004;
+    if (state == 1)
+        scale -= 0.00004;
+    vec.x = 800;
+    vec.y = 600;
+    sfSprite_setOrigin(game->menu->map, vec);
+    sfSprite_setPosition(game->menu->map, vec);
+    vec.x = scale;
+    vec.y = scale;
+    sfSprite_setScale(game->menu->map, vec);
+}
+
 void my_display_menu(game_t *game)
 {
     sfRenderWindow_clear(game->window, sfBlack);
+    my_anim_map_menu(game);
+    my_anim_map_menu2(game);
     sfRenderWindow_drawSprite(game->window, game->menu->back, NULL);
     sfRenderWindow_drawSprite(game->window, game->menu->map, NULL);
     sfRenderWindow_drawSprite(game->window, game->menu->front, NULL);

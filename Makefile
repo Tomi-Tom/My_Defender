@@ -37,7 +37,11 @@ GAME_PATH		=			$(SRC_PATH)game/
 
 MENU_PATH		=			$(SRC_PATH)menu/
 
+PAUSE_PATH		=			$(SRC_PATH)pause/
+
 LINKED_PATH		=			$(SRC_PATH)linked_list/
+
+FREE_PATH		=			$(SRC_PATH)free/
 
 TEST_PATH		=			tests/
 
@@ -45,6 +49,7 @@ TEST_PATH		=			tests/
 
 SRC_UTILS		=			$(UTILS_PATH)my_error_handling.c		\
 							$(UTILS_PATH)my_help.c					\
+							$(UTILS_PATH)my_poll_event.c			\
 
 SRC_LINKED		=			$(LINKED_PATH)my_linked_entity.c		\
 
@@ -71,10 +76,15 @@ SRC_INIT		=			$(INIT_PATH)my_init_game.c				\
 							$(INIT_PATH)my_init_life.c				\
 							$(INIT_PATH)my_init_music.c				\
 							$(INIT_PATH)my_init_menu.c				\
+							$(INIT_PATH)my_init_pause.c				\
 
 SRC_GAME		=			$(GAME_PATH)my_game_loop.c				\
 
 SRC_MENU		=			$(MENU_PATH)my_menu_loop.c				\
+
+SRC_PAUSE		=			$(PAUSE_PATH)my_pause_menu.c				\
+
+SRC_FREE		=			$(FREE_PATH)my_free_struct_game.c		\
 
 SRC_GLOBAL		=			$(SRC_UTILS)							\
 							$(SRC_LINKED)							\
@@ -87,6 +97,8 @@ SRC_GLOBAL		=			$(SRC_UTILS)							\
 							$(SRC_INIT)								\
 							$(SRC_GAME)								\
 							$(SRC_MENU)								\
+							$(SRC_PAUSE)							\
+							$(SRC_FREE)								\
 
 SRC				=			$(SRC_GLOBAL)							\
 							main.c
