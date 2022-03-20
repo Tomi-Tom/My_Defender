@@ -8,7 +8,7 @@
 #ifndef MY_SETTINGS_H_
     #define MY_SETTINGS_H_
 
-
+    #define square(a)  (a)*(a)
 
     #define END_GAME game->end_game = 1
     #define END_PROG game->end = 1
@@ -23,8 +23,6 @@
         button->vec.y && mouse.y <= button->vec.y + button->rect.height
     #define LEFT_CLICKED sfMouse_isButtonPressed(click)
     #define BUTTON_PRESSED CURSOR_IS_IN_BUTTON && LEFT_CLICKED
-
-/*==================[MENU SETTINGS]==================*/
 
     #define LAUNCH_GAME 1
     #define DISPLAY_HTP 2
@@ -60,6 +58,5 @@
 
     #define TOWER4_SELECT mouse.x >= 1325 && mouse.y >= 914 && \
         mouse.x <= 1420 && mouse.y <= 1005 && LEFT_CLICKED
-
 
 #endif /* !MY_SETTINGS_H_ */

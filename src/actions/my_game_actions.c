@@ -16,8 +16,8 @@ int is_tile_clicked(game_t *game, tile_t *tile)
     mouse = sfMouse_getPositionRenderWindow(game->window);
     if (mouse.x >= vec.x && mouse.x <= vec.x + 128 &&
         mouse.y >= vec.y && mouse.y <= vec.y + 128) {
-            if (LEFT_CLICKED)
-                return 1;
+        if (LEFT_CLICKED)
+            return 1;
     }
     return 0;
 }

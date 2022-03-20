@@ -21,7 +21,7 @@ void my_set_new_pos(wave_t *wave, entity_t *entity)
 
 void my_move_ennemie(entity_t *entity, wave_t *wave, game_t *game)
 {
-    if (entity->moving == 128) {
+    if (entity->moving >= 128) {
         entity->moving = 0;
         my_set_new_pos(wave, entity);
         entity->tile += 1;

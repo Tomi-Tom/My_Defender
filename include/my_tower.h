@@ -9,6 +9,7 @@
     #define MY_TOWER_H_
 
 typedef struct tower_s {
+    int type;
     sfClock *shoot;
     sfClock *rotate;
     sfSprite *body;

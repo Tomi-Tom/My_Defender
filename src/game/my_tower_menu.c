@@ -10,7 +10,6 @@
 void my_select_tower1(game_t *game, tile_t *tile)
 {
     tile->tower = malloc(sizeof(tower_t));
-
     sfSprite *sp_head = sfSprite_create();
     sfTexture *tex_head = sfTexture_createFromFile("assets/tower/t1_h.png",
         NULL);
@@ -18,6 +17,7 @@ void my_select_tower1(game_t *game, tile_t *tile)
     sfTexture *tex_body = sfTexture_createFromFile("assets/tower/t1_b.png",
         NULL);
 
+    tile->tower->type = 1;
     game->money->money -= 5;
     sfSprite_setTexture(sp_head, tex_head, sfTrue);
     sfSprite_setTexture(sp_body, tex_body, sfTrue);
@@ -34,7 +34,6 @@ void my_select_tower1(game_t *game, tile_t *tile)
 void my_select_tower2(game_t *game, tile_t *tile)
 {
     tile->tower = malloc(sizeof(tower_t));
-
     sfSprite *sp_head = sfSprite_create();
     sfTexture *tex_head = sfTexture_createFromFile("assets/tower/t2_h.png",
         NULL);
@@ -42,6 +41,7 @@ void my_select_tower2(game_t *game, tile_t *tile)
     sfTexture *tex_body = sfTexture_createFromFile("assets/tower/t2_b.png",
         NULL);
 
+    tile->tower->type = 2;
     game->money->money -= 10;
     sfSprite_setTexture(sp_head, tex_head, sfTrue);
     sfSprite_setTexture(sp_body, tex_body, sfTrue);
@@ -58,7 +58,6 @@ void my_select_tower2(game_t *game, tile_t *tile)
 void my_select_tower3(game_t *game, tile_t *tile)
 {
     tile->tower = malloc(sizeof(tower_t));
-
     sfSprite *sp_head = sfSprite_create();
     sfTexture *tex_head = sfTexture_createFromFile("assets/tower/t3_h.png",
         NULL);
@@ -66,6 +65,7 @@ void my_select_tower3(game_t *game, tile_t *tile)
     sfTexture *tex_body = sfTexture_createFromFile("assets/tower/t3_b.png",
         NULL);
 
+    tile->tower->type = 3;
     game->money->money -= 25;
     sfSprite_setTexture(sp_head, tex_head, sfTrue);
     sfSprite_setTexture(sp_body, tex_body, sfTrue);
@@ -82,7 +82,6 @@ void my_select_tower3(game_t *game, tile_t *tile)
 void my_select_tower4(game_t *game, tile_t *tile)
 {
     tile->tower = malloc(sizeof(tower_t));
-
     sfSprite *sp_head = sfSprite_create();
     sfTexture *tex_head = sfTexture_createFromFile("assets/tower/t4_h.png",
         NULL);
@@ -90,6 +89,7 @@ void my_select_tower4(game_t *game, tile_t *tile)
     sfTexture *tex_body = sfTexture_createFromFile("assets/tower/t4_b.png",
         NULL);
 
+    tile->tower->type = 4;
     game->money->money -= 50;
     sfSprite_setTexture(sp_head, tex_head, sfTrue);
     sfSprite_setTexture(sp_body, tex_body, sfTrue);

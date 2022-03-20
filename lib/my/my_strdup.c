@@ -7,7 +7,7 @@
 
 #include "stdlib.h"
 
-int     my_strlendup(char const *str)
+int my_strlendup(char const *str)
 {
     int i = 0;
 
@@ -16,7 +16,7 @@ int     my_strlendup(char const *str)
     return (i);
 }
 
-char    *my_strdup(char const *src)
+char *my_strdup(char const *src)
 {
     int i = 0;
     int len = my_strlendup(src);

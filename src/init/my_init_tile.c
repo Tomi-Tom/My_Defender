@@ -15,8 +15,8 @@ void my_parse_tiles(game_t *game)
     while (game->map[i]) {
         j = 0;
         while (game->map[i][j]) {
-            game->map[i][j] == '2' ?
-                game->tile = my_append_tile(game, j, i):NULL;
+            game->map[i][j] == '2' ? game->tile = my_append_tile(game, j, i)
+                : NULL;
             j++;
         }
         i++;

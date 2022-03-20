@@ -9,9 +9,10 @@
 
 void my_create_ennemies(game_t *game)
 {
+    float time = 1 / (((float)game->wave->wave_max / 10) + 1);
     if (game->wave->wave < game->wave->wave_max) {
         if (sfTime_asSeconds(sfClock_getElapsedTime(game->wave->time))
-            >= 0.15) {
+            >= time) {
             sfClock_restart(game->wave->time);
             game->wave->count += 1;
         }
@@ -25,6 +26,7 @@ void my_create_ennemies(game_t *game)
         game->wave->wave = 0;
         game->wave->count = 0;
         game->wave->wave_max += 5;
+        game->wave->wave_max % 10 != 0 ? game->wave->spd += 1 : 0;
         sfClock_restart(game->wave->time);
     }
 }

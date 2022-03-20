@@ -21,7 +21,7 @@ entity_t *my_init_entity(game_t *game)
     elem->vec = game->wave->begin;
     elem->tile = 0;
     elem->moving = 0;
-    elem->spd = ENTITY_SPEED;
+    elem->spd = game->wave->spd;
     elem->life = ENTITY_LIFE;
     elem->prev = NULL;
     elem->next = NULL;

@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-char    *my_revstr(char *str)
+char *my_revstr(char *str)
 {
     int len = my_strlen(str) - 1;
     int i = 0;

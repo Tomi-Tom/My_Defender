@@ -121,6 +121,7 @@ CPPFLAGS		=			-I include
 LDFLAGS			=			-L lib -lmy							\
 							-lcsfml-graphics -lcsfml-system 	\
 							-lcsfml-audio -lcsfml-window		\
+							-lm									\
 
 CRIT			=			$(LDFLAGS) $(CPPFLAGS) -lcriterion --coverage
 
