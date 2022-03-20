@@ -52,6 +52,7 @@ SRC_UTILS		=			$(UTILS_PATH)my_error_handling.c		\
 							$(UTILS_PATH)my_poll_event.c			\
 
 SRC_LINKED		=			$(LINKED_PATH)my_linked_entity.c		\
+							$(LINKED_PATH)my_linked_tile.c			\
 
 SRC_WINDOW		=			$(WINDOW_PATH)my_window.c				\
 
@@ -68,6 +69,7 @@ SRC_DISPLAY		=			$(DISPLAY_PATH)my_display_map.c			\
 							$(DISPLAY_PATH)my_display_ennemies.c	\
 							$(DISPLAY_PATH)my_display_life.c		\
 							$(DISPLAY_PATH)my_display_menu.c		\
+							$(DISPLAY_PATH)my_display_money.c		\
 
 SRC_PARSE		=			$(PARSE_PATH)my_parse_path.c			\
 
@@ -77,12 +79,14 @@ SRC_INIT		=			$(INIT_PATH)my_init_game.c				\
 							$(INIT_PATH)my_init_music.c				\
 							$(INIT_PATH)my_init_menu.c				\
 							$(INIT_PATH)my_init_pause.c				\
+							$(INIT_PATH)my_init_tile.c				\
 
 SRC_GAME		=			$(GAME_PATH)my_game_loop.c				\
+							$(GAME_PATH)my_tower_menu.c				\
 
 SRC_MENU		=			$(MENU_PATH)my_menu_loop.c				\
 
-SRC_PAUSE		=			$(PAUSE_PATH)my_pause_menu.c				\
+SRC_PAUSE		=			$(PAUSE_PATH)my_pause_menu.c			\
 
 SRC_FREE		=			$(FREE_PATH)my_free_struct_game.c		\
 
@@ -109,7 +113,7 @@ OBJ				=			$(SRC:.c=.o)
 
 ## =========================[OPTIONS]=========================
 
-FLAGS			=			-Wall -Wextra -Werror
+CFLAGS			=			-Wall -Wextra
 
 CPPFLAGS		=			-I include
 
@@ -128,7 +132,7 @@ all:
 		make $(NAME)
 
 $(NAME):	$(OBJ)
-		gcc $(FLAGS) -o $(NAME) $(OBJ) $(CPPFLAGS) $(LDFLAGS)
+		gcc -o $(NAME) $(OBJ) $(LDFLAGS)
 
 re:			fclean	all
 

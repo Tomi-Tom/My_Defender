@@ -13,12 +13,13 @@ int my_get_actions_in_pause(game_t *game)
     sfMouseButton click = 0;
 
     mouse = sfMouse_getPositionRenderWindow(game->window);
+    my_poll_event(game);
     if (is_button_pressed(game->pause_menu->resume, mouse, click))
         return 1;
     if (is_button_pressed(game->pause_menu->menu, mouse, click))
         return 2;
     if (is_button_pressed(game->pause_menu->leave, mouse, click))
-        return 2;
+        return 3;
     return 0;
 }
 

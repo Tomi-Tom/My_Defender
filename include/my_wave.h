@@ -15,7 +15,9 @@ typedef struct wave_s {
     int wave;
     int wave_max;
     char *path;
+    int end_menu;
     sfSprite *sprite;
+    sfSprite *menu_tower;
     entity_t *entity;
 } wave_t;
 

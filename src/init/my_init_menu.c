@@ -10,13 +10,14 @@
 void my_init_menu_sprites(game_t *game)
 {
     sfSprite *sp_back = sfSprite_create();
-    sfTexture *tex_back = sfTexture_createFromFile("assets/menu_back.png",
+    sfTexture *tex_back = sfTexture_createFromFile("assets/menu/menu_back.png",
         NULL);
     sfSprite *sp_map = sfSprite_create();
-    sfTexture *tex_map = sfTexture_createFromFile("assets/menu_map.png", NULL);
-    sfSprite *sp_front = sfSprite_create();
-    sfTexture *tex_front = sfTexture_createFromFile("assets/menu_front.png",
+    sfTexture *tex_map = sfTexture_createFromFile("assets/menu/menu_map.png",
         NULL);
+    sfSprite *sp_front = sfSprite_create();
+    sfTexture *tex_front =
+        sfTexture_createFromFile("assets/menu/menu_front.png", NULL);
 
     sfSprite_setTexture(sp_back, tex_back, sfTrue);
     sfSprite_setTexture(sp_map, tex_map, sfTrue);
@@ -70,14 +71,14 @@ void my_set_menu_rect(menu_t *menu)
 void my_set_buttons(menu_t *menu)
 {
     sfSprite *sp_play = sfSprite_create();
-    sfTexture *tex_play = sfTexture_createFromFile("assets/play_sheet.png",
-        NULL);
+    sfTexture *tex_play =
+        sfTexture_createFromFile("assets/menu/play_sheet.png", NULL);
     sfSprite *sp_hplay = sfSprite_create();
     sfTexture *tex_hplay =
-        sfTexture_createFromFile("assets/how_to_play_sheet.png", NULL);
+        sfTexture_createFromFile("assets/menu/how_to_play_sheet.png", NULL);
     sfSprite *sp_leave = sfSprite_create();
-    sfTexture *tex_leave = sfTexture_createFromFile("assets/leave_sheet.png",
-        NULL);
+    sfTexture *tex_leave =
+        sfTexture_createFromFile("assets/menu/leave_sheet.png", NULL);
     sfSprite_setTexture(sp_play, tex_play, sfTrue);
     sfSprite_setTexture(sp_hplay, tex_hplay, sfTrue);
     sfSprite_setTexture(sp_leave, tex_leave, sfTrue);
@@ -90,10 +91,18 @@ void my_set_buttons(menu_t *menu)
 
 void my_init_menu(game_t *game)
 {
+    game->font = sfFont_createFromFile("assets/font/Hartone Softed.ttf");
+    sfVector2f vec = {520, 450};
+
     game->menu = malloc(sizeof(menu_t));
     my_init_menu_sprites(game);
     game->menu->scale = 1;
     game->menu->best_wave = 0;
+    game->best_wave = sfText_create();
+    sfText_setFont(game->best_wave, game->font);
+    sfText_setCharacterSize(game->best_wave, 300);
+    sfText_setPosition(game->best_wave, vec);
+    sfText_setString(game->best_wave, "0");
     game->menu->play = malloc(sizeof(button_t));
     game->menu->how_to_play = malloc(sizeof(button_t));
     game->menu->leave = malloc(sizeof(button_t));

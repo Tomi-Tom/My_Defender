@@ -13,6 +13,7 @@ typedef struct life_s {
     sfSprite *hp;
     sfIntRect rect_base;
     sfIntRect rect_hp;
+    sfText *t_life;
     int width;
     float life_max;
     float life;

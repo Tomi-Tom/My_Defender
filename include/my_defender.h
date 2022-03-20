@@ -35,7 +35,9 @@ typedef struct vec_s {
     #include "my_button.h"
     #include "my_life.h"
     #include "my_music.h"
+    #include "my_sound.h"
     #include "my_menu.h"
+    #include "my_money.h"
     #include "my_pause.h"
     #include "my_settings.h"
 
@@ -43,16 +45,20 @@ typedef struct game_s {
     int end;
     int end_game;
     int pause;
+    sfFont *font;
     sfRenderWindow *window;
     sfSprite *bgsprite;
     sfSprite *portal;
     sfSprite *base;
+    sfText *best_wave;
     char **map;
     menu_t *menu;
+    sound_t *sound;
     pause_t *pause_menu;
     music_t *music;
-    tower_plate_t *tower;
     life_t *life;
+    money_t *money;
+    tile_t *tile;
     wave_t *wave;
     sfEvent event;
 } game_t;
@@ -71,16 +77,18 @@ void my_window(int ac, char **av);
 char *my_parse_path(char **map);
 game_t *my_init_game(char *filename);
 void my_init_ennemies(game_t *game);
-void my_init_life(game_t *game);
+void my_init_life_and_money(game_t *game);
 void my_init_music(game_t *game);
 void my_init_menu(game_t *game);
 void my_init_pause(game_t *game);
+void my_init_tile(game_t *game);
 
 /*==========================[LOOP]==========================*/
 
 void my_game_loop(game_t *game);
 void my_menu_loop(game_t *game);
 void my_pause_menu(game_t *game);
+void my_tower_menu(game_t *game, tile_t *tile);
 
 /*=========================[CREATE]=========================*/
 
@@ -106,6 +114,7 @@ void my_display_map(game_t *game);
 void my_display_tower(game_t *game);
 void my_display_ennemies(game_t *game);
 void my_display_life(game_t *game);
+void my_display_money(game_t *game);
 
 void my_display_button(button_t *button, game_t *game);
 
@@ -122,6 +131,8 @@ int is_button_pressed(button_t *button, sfVector2i mouse, sfMouseButton click);
 
 entity_t *my_append_entity(game_t *game);
 entity_t *my_delete_entity(game_t *game, int id);
+
+tile_t *my_append_tile(game_t *game, int x, int y);
 
 /*==========================[FREE]==========================*/
 

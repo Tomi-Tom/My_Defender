@@ -9,15 +9,18 @@
 
 void my_init_pause_sprite(game_t *game)
 {
-    sfTexture *t_bg = sfTexture_createFromFile("assets/menu_pause.png", NULL);
-    sfTexture *t_r = sfTexture_createFromFile("assets/play_sheet.png", NULL);
-    sfTexture *t_m = sfTexture_createFromFile("assets/menu_sheet.png", NULL);
-    sfTexture *t_l = sfTexture_createFromFile("assets/leave_sheet.png", NULL);
+    sfTexture *t_bg =
+        sfTexture_createFromFile("assets/menu_pause/menu_pause.png", NULL);
+    sfTexture *t_r =
+        sfTexture_createFromFile("assets/menu_pause/play_sheet.png", NULL);
+    sfTexture *t_m =
+        sfTexture_createFromFile("assets/menu_pause/menu_sheet.png", NULL);
+    sfTexture *t_l =
+        sfTexture_createFromFile("assets/menu_pause/leave_sheet.png", NULL);
     sfSprite *sp_bg = sfSprite_create();
     sfSprite *sp_r = sfSprite_create();
     sfSprite *sp_m = sfSprite_create();
     sfSprite *sp_l = sfSprite_create();
-
     sfSprite_setTexture(sp_bg, t_bg, sfTrue);
     sfSprite_setTexture(sp_r, t_r, sfTrue);
     sfSprite_setTexture(sp_m, t_m, sfTrue);

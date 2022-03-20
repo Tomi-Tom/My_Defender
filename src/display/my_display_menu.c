@@ -9,19 +9,16 @@
 
 void my_display_button(button_t *button, game_t *game)
 {
-    sfVector2f mouse = {0, 0};
+    sfVector2i mouse = sfMouse_getPositionRenderWindow(game->window);
     sfMouseButton click = 0;
-    sfVector2f vec;
+    sfVector2f vec = {button->vec.x, button->vec.y};
 
-    mouse.x = sfMouse_getPositionRenderWindow(game->window).x;
-    mouse.y = sfMouse_getPositionRenderWindow(game->window).y;
-    vec.x = button->vec.x;
-    vec.y = button->vec.y;
     button->rect.left = 0;
     if (CURSOR_IS_IN_BUTTON) {
         button->rect.left = 535;
-        if (LEFT_CLICKED)
+        if (LEFT_CLICKED) {
             button->rect.left = 535 * 2;
+        }
     }
     sfSprite_setPosition(button->sprite, vec);
     sfSprite_setTextureRect(button->sprite, button->rect);
@@ -88,5 +85,6 @@ void my_display_menu(game_t *game)
     sfRenderWindow_drawSprite(game->window, game->menu->map, NULL);
     sfRenderWindow_drawSprite(game->window, game->menu->front, NULL);
     my_display_buttons(game);
+    sfRenderWindow_drawText(game->window, game->best_wave, NULL);
     sfRenderWindow_display(game->window);
 }

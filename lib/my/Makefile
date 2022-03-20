@@ -9,7 +9,7 @@
 
 NAME 	= 	libmy.a
 
-CFLAG 	= 	-Wall -Wextra -g
+CFLAGS 	= 	-Wall -Wextra
 
 SRC		=	disp_stdarg.c				\
 			do_op.c						\

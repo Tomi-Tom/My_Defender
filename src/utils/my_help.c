@@ -9,7 +9,7 @@
 
 int my_help(void)
 {
-    my_putstr("\t\t\n+-----------------------------------+\n");
+    my_putstr("\t\t+-----------------------------------+\n");
     my_putstr("\t\t|   O=   -   -   -   -   -   -   X  |\n");
     my_putstr("\t\t| .      .   MY_DEFENDER  .    *    |\n");
     my_putstr("\t\t|     *      .      .        .     .|\n");

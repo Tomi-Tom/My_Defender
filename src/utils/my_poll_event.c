@@ -13,6 +13,7 @@ int my_poll_event(game_t *game)
         if (game->event.type == sfEvtClosed) {
             END_GAME;
             END_PROG;
+            game->pause = 0;
         }
         if (sfKeyboard_isKeyPressed(sfKeyEscape))
             return ESCAPE_KEY;

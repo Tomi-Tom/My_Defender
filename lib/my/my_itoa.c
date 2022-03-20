@@ -15,7 +15,7 @@ int my_nbrlen(int nb)
         nb = nb * -1;
         i++;
     }
-    while (nb > 10) {
+    while (nb >= 10) {
         i++;
         nb = nb / 10;
     }

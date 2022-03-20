@@ -7,6 +7,19 @@
 
 #include "my_defender.h"
 
+void my_display_life_text(game_t *game)
+{
+    char *current_life = my_itoa(game->life->life);
+    char *display = malloc(sizeof(char) * 10);
+
+    my_strcpy(display, current_life);
+    my_strcat(display, " / ");
+    my_strcat(display,  my_itoa(game->life->life_max));
+    sfText_setString(game->life->t_life, display);
+    sfRenderWindow_drawText(game->window, game->life->t_life, NULL);
+    free(display);
+}
+
 void my_display_life(game_t *game)
 {
     sfVector2f vec;
@@ -23,4 +36,5 @@ void my_display_life(game_t *game)
     sfSprite_setTextureRect(game->life->base_hp, game->life->rect_base);
     sfRenderWindow_drawSprite(game->window, game->life->hp, NULL);
     sfRenderWindow_drawSprite(game->window, game->life->base_hp, NULL);
+    my_display_life_text(game);
 }

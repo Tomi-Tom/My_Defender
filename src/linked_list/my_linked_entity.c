@@ -11,12 +11,11 @@ entity_t *my_init_entity(game_t *game)
 {
     entity_t *elem = malloc(sizeof(entity_t));
 
+    if (elem == NULL)
+        return NULL;
     elem->anim = sfClock_create();
     elem->move = sfClock_create();
-    elem->rect.left = 0;
-    elem->rect.top = 0;
-    elem->rect.height = ENTITY_HEIGHT;
-    elem->rect.width = ENTITY_WIDTH;
+    elem->rect = (sfIntRect) {.left = 0, .top = 0, .height = 64, .width = 64};
     elem->sprite = game->wave->sprite;
     elem->type = 1;
     elem->vec = game->wave->begin;
@@ -46,24 +45,19 @@ entity_t *my_append_entity(game_t *game)
 
 entity_t *my_delete_entity(game_t *game, int id)
 {
-    int count = 0;
-    entity_t *tmp_next = NULL;
-    entity_t *tmp_prev = NULL;
-    entity_t *to_free = NULL;
-    entity_t *tmp = game->wave->entity;
+    entity_t *head = game->wave->entity;
+    entity_t *previous = head;
+    entity_t *deleted = NULL;
 
-    while (count < id) {
-        game->wave->entity = game->wave->entity->next;
-        count++;
+    for (size_t i = 0; i < id && previous != NULL; ++i)
+        previous = previous->next;
+    if (previous != NULL) {
+        deleted = previous->next;
+        if (previous->next != NULL)
+            previous->next = previous->next->next;
+        else
+            previous->next = NULL;
     }
-    to_free = game->wave->entity;
-    tmp_next = game->wave->entity->next;
-    tmp_prev = game->wave->entity->prev;
-    if (tmp_next == NULL && tmp_prev == NULL)
-        return NULL;
-    if (tmp_prev)
-        tmp_prev->next = tmp_next;
-    if (tmp_next)
-        tmp_next->prev = tmp_prev;
-    return tmp;
+    game->wave->entity = head;
+    return deleted;
 }

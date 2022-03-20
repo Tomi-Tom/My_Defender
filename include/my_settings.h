@@ -37,4 +37,27 @@
     #define ENTITY_HEIGHT 64
     #define ENTITY_WIDTH 64
 
+    #define TOWER_SELECT (mouse.x >= 500 && mouse.y >= 914 && \
+        mouse.x <=  595 && mouse.y <= 1005 || \
+        mouse.x >= 780 && mouse.y >= 914 && \
+        mouse.x <= 870 && mouse.y <= 1005 || \
+        mouse.x >= 1055 && mouse.y >= 914 && \
+        mouse.x <= 1145 && mouse.y <= 1005 || \
+        mouse.x >= 1325 && mouse.y >= 914 && \
+        mouse.x <= 1420 && mouse.y <= 1005) \
+        && LEFT_CLICKED
+
+    #define TOWER1_SELECT mouse.x >= 500 && mouse.y >= 914 && \
+        mouse.x <=  595 && mouse.y <= 1005 && LEFT_CLICKED
+
+    #define TOWER2_SELECT mouse.x >= 780 && mouse.y >= 914 && \
+        mouse.x <= 870 && mouse.y <= 1005 && LEFT_CLICKED
+
+    #define TOWER3_SELECT mouse.x >= 1055 && mouse.y >= 914 && \
+        mouse.x <= 1145 && mouse.y <= 1005 && LEFT_CLICKED
+
+    #define TOWER4_SELECT mouse.x >= 1325 && mouse.y >= 914 && \
+        mouse.x <= 1420 && mouse.y <= 1005 && LEFT_CLICKED
+
+
 #endif /* !MY_SETTINGS_H_ */

@@ -9,13 +9,13 @@
     #define MY_TOWER_H_
 
 typedef struct tower_s {
-    sfClock *time;
-    char *tower_name;
-    sfSprite *sprite;
-    int att_spd;
+    sfClock *shoot;
+    sfClock *rotate;
+    sfSprite *body;
+    sfSprite *head;
     int dmg;
+    int att_spd;
     int range;
-    int bullet_spd;
 } tower_t;
 
 #endif /* !MY_TOWER_H_ */

@@ -8,11 +8,12 @@
 #ifndef MY_TILE_H_
     #define MY_TILE_H_
 
-typedef struct tower_plate_s {
+typedef struct tile_s {
     int x;
     int y;
     int is_tower;
     tower_t *tower;
-} tower_plate_t;
+    struct tile_s *next;
+} tile_t;
 
 #endif /* !MY_TILE_H_ */

@@ -9,17 +9,13 @@
 
 vec_t get_departure(char **map)
 {
-    vec_t vec;
-    vec_t res;
+    vec_t vec = {0, 0};
+    vec_t res = {0, 0};
 
-    vec.x = 0;
-    vec.y = 0;
-    res.x = 0;
-    res.y = 0;
     while (map[vec.y]) {
         vec.x = 0;
         while (map[vec.y][vec.x]) {
-            map[vec.y][vec.x] == 'D' ? res = vec : res;
+            res = (map[vec.y][vec.x] == 'D' ?  vec : res);
             vec.x++;
         }
         vec.y++;
@@ -29,22 +25,19 @@ vec_t get_departure(char **map)
 
 char *my_get_path(char **map, vec_t pos, int lim, char *path)
 {
-    vec_t tmp;
+    vec_t tmp = {.x = pos.x, .y = pos.y};
+
     if (lim != 3 && map[pos.y - 1][pos.x] == '1') {
-        tmp.x = pos.x;
-        tmp.y = pos.y - 1;
+        tmp.y--;
         return my_strcat(my_get_path(map, tmp, 1, path), "U");
     } else if (lim != 4 && map[pos.y][pos.x + 1] == '1') {
-        tmp.x = pos.x + 1;
-        tmp.y = pos.y;
+        tmp.x++;
         return my_strcat(my_get_path(map, tmp, 2, path), "R");
     } else if (lim != 1 && map[pos.y + 1][pos.x] == '1') {
-        tmp.x = pos.x;
-        tmp.y = pos.y + 1;
+        tmp.y++;
         return my_strcat(my_get_path(map, tmp, 3, path), "D");
     } else if (lim != 2 && map[pos.y][pos.x - 1] == '1') {
-        tmp.x = pos.x - 1;
-        tmp.y = pos.y;
+        tmp.x--;
         return my_strcat(my_get_path(map, tmp, 4, path), "L");
     }
     path[0] = '\0';
@@ -60,7 +53,7 @@ int my_len_path(char **map)
     while (map[i]) {
         j = 0;
         while (map[i][j]) {
-            map[i][j] == '1' ? count = count + 1 : count;
+            count = (map[i][j] == '1' ? count + 1 : count);
             j++;
         }
         i++;
