@@ -13,6 +13,7 @@ typedef struct wave_s {
     vec_t begin;
     int count;
     int wave;
+    int actual_wave;
     int wave_max;
     char *path;
     int end_menu;

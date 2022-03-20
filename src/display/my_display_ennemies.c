@@ -24,8 +24,9 @@ void my_move_ennemies(game_t *game)
     int count = 0;
 
     while (tmp) {
-        if (game->wave->path[tmp->tile] == '\0') {
+        if (game->wave->path[tmp->tile] == '\0' || game->wave->entity->life == 0) {
             game->wave->entity = my_delete_entity(game, count);
+            game->life->life -= 1;
         }
         count++;
         my_move_ennemie(tmp, game->wave, game);

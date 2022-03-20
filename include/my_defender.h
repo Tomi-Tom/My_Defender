@@ -136,6 +136,11 @@ tile_t *my_append_tile(game_t *game, int x, int y);
 
 /*==========================[FREE]==========================*/
 
-void my_free_struct_game(game_t *game);
+void my_free_game(game_t *game);
+void my_free_entity_list(entity_t **list);
+void my_free_entity(entity_t *entity);
+void my_free_button(button_t *button);
+void my_free_tile_list(tile_t **list);
+void my_free_tower(tower_t *tower);
 
 #endif /* !MY_PROJECT_H */

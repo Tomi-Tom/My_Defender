@@ -44,7 +44,9 @@
         mouse.x >= 1055 && mouse.y >= 914 && \
         mouse.x <= 1145 && mouse.y <= 1005 || \
         mouse.x >= 1325 && mouse.y >= 914 && \
-        mouse.x <= 1420 && mouse.y <= 1005) \
+        mouse.x <= 1420 && mouse.y <= 1005 || \
+        mouse.x >= 1480 && mouse.y >= 840 && \
+        mouse.x <= 1530 && mouse.y <= 895) \
         && LEFT_CLICKED
 
     #define TOWER1_SELECT mouse.x >= 500 && mouse.y >= 914 && \

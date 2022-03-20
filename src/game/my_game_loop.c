@@ -41,9 +41,9 @@ void my_game_loop(game_t *game)
         my_display_game(game);
         my_tower_actions(game);
         my_game_parse_life(game);
+        my_game_actions(game);
         if (my_poll_event(game) == ESCAPE_KEY)
             my_pause_menu(game);
-        my_game_actions(game);
         sfRenderWindow_display(game->window);
     }
     sfMusic_stop(game->music->game_music);

@@ -23,6 +23,7 @@ void my_init_ennemies(game_t *game)
     game->wave->entity = NULL;
     game->wave->count = 0;
     game->wave->wave = 0;
+    game->wave->actual_wave = 0;
     game->wave->wave_max = 5;
     game->wave->sprite = sp_e;
     game->wave->end_menu = 0;

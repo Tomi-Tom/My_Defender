@@ -16,5 +16,5 @@ void my_window(int ac, char **av)
     while (game->end == 0) {
         my_menu_loop(game);
     }
-    my_free_struct_game(game);
+    my_free_game(game);
 }

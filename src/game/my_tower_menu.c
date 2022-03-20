@@ -114,13 +114,13 @@ void my_tower_menu(game_t *game, tile_t *tile)
         mouse = sfMouse_getPositionRenderWindow(game->window);
         if (TOWER_SELECT)
             game->wave->end_menu = 1;
-        if (TOWER1_SELECT)
+        if (TOWER1_SELECT && game->money->money >= 5)
             my_select_tower1(game, tile);
-        if (TOWER2_SELECT)
+        if (TOWER2_SELECT && game->money->money >= 10)
             my_select_tower2(game, tile);
-        if (TOWER3_SELECT)
+        if (TOWER3_SELECT && game->money->money >= 25)
             my_select_tower3(game, tile);
-        if (TOWER4_SELECT)
+        if (TOWER4_SELECT && game->money->money >= 50)
             my_select_tower4(game, tile);
     }
     game->wave->end_menu = 0;

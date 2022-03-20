@@ -25,7 +25,6 @@ void my_create_ennemies(game_t *game)
         game->wave->wave = 0;
         game->wave->count = 0;
         game->wave->wave_max += 5;
-        game->life->life -= 5;
         sfClock_restart(game->wave->time);
     }
 }

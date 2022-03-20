@@ -88,7 +88,8 @@ SRC_MENU		=			$(MENU_PATH)my_menu_loop.c				\
 
 SRC_PAUSE		=			$(PAUSE_PATH)my_pause_menu.c			\
 
-SRC_FREE		=			$(FREE_PATH)my_free_struct_game.c		\
+SRC_FREE		=			$(FREE_PATH)my_free_game.c		\
+							$(FREE_PATH)my_free_button.c	\
 
 SRC_GLOBAL		=			$(SRC_UTILS)							\
 							$(SRC_LINKED)							\
@@ -113,7 +114,7 @@ OBJ				=			$(SRC:.c=.o)
 
 ## =========================[OPTIONS]=========================
 
-CFLAGS			=			-Wall -Wextra
+CFLAGS			=			-Wall -Wextra -g
 
 CPPFLAGS		=			-I include
 

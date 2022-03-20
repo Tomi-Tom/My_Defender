@@ -61,3 +61,22 @@ entity_t *my_delete_entity(game_t *game, int id)
     game->wave->entity = head;
     return deleted;
 }
+
+void my_free_entity(entity_t *entity)
+{
+    sfClock_destroy(entity->anim);
+    sfClock_destroy(entity->move);
+    free(entity);
+}
+
+void my_free_entity_list(entity_t **list)
+{
+    entity_t *temp;
+
+    while (*list != NULL) {
+        temp = *list;
+        *list = (*list)->next;
+        my_free_entity(temp);
+    }
+    *list = NULL;
+}
